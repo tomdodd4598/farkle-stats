@@ -247,7 +247,7 @@ def main():
                         def d(x):
                             return 'die' if x == 1 else 'dice'
 
-                        r = c - u - 2
+                        r = next_n(c - u - 2)
                         print(f'Score {s} with {u} {d(u)}.')
                         print(f'You now have a current total of {t + s} and {r} available {d(r)}.')
                 else:
