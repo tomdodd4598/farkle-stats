@@ -1,11 +1,17 @@
-Farkle Stat Analyser
-====================
+Farkle Calculator
+=================
 
 
 Summary
 -------
 
-A Python script which analyses the stats of the dice game Farkle.
+A Python script which calculates the optimal decisions for a single turn in the dice game Farkle. Note that this program is only concerned with optimising the score obtained in a single, isolated turn; it does not necessarily produce the optimal decisions for particular scenarios against other players.
+
+The algorithm used is based on [Matt Busche's blog post](http://www.mattbusche.org/blog/article/zilch/) about the very similar game of Zilch, and produces expected values of rolls in agreement with [possiblywrong's blog post](https://possiblywrong.wordpress.com/2013/04/07/analysis-of-farkle/).
+
+A few settings exist which can be easily modified, and data from the most recent run will be cached so that it can be loaded if the properties of the game haven't been changed.
+
+Requires the NumPy and Numba packages.
 
 
 Permissions
