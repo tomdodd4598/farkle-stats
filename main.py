@@ -239,12 +239,12 @@ def main():
     print()
 
     def query_help():
-        print('h\t\t\t\t\t: Display help.')
-        print('r [total] [dice]\t: Expected value of roll with the current total and available dice.')
-        print('\t\t\t\t\t  Example: \'r 200 4\'')
-        print('s [total] [roll...]\t: Best choice of dice to score with the current total and rolled dice.')
-        print('\t\t\t\t\t  Example: \'s 400 1 5 5\'')
-        print('q\t\t\t\t\t: Quit program.')
+        print('h                   : Display help.')
+        print('r [total] [dice]    : Expected value of roll with the current total and available dice.')
+        print('                      Example: \'r 200 4\'')
+        print('s [total] [roll...] : Best choice of dice to score with the current total and rolled dice.')
+        print('                      Example: \'s 400 1 5 5\'')
+        print('q                   : Quit program.')
 
     while True:
         inp = input('Enter query: ').split()
