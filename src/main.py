@@ -270,14 +270,15 @@ def main():
 
     while True:
         inp = input('Enter query: ').split()
-        if len(inp) > 0:
+        c = len(inp)
+        if c > 0:
             fst = inp[0].lower()
-            if len(inp) == 1 and fst == 'q':
+            if c == 1 and fst == 'q':
                 break
-            elif len(inp) == 1 and fst == 'h':
+            elif c == 1 and fst == 'h':
                 query_help()
                 continue
-            elif len(inp) == 3 and fst == 'r' and inp[1].isnumeric() and inp[2].isnumeric():
+            elif c == 3 and fst == 'r' and inp[1].isnumeric() and inp[2].isnumeric():
                 roll_ev, dice = roll_ev_cache.get(int(inp[1])), int(inp[2])
                 if roll_ev and 1 <= dice <= DICE:
                     ev = roll_ev[dice - 1]
@@ -286,12 +287,29 @@ def main():
                 else:
                     print('Roll data does not exist for this input!')
                 continue
-            elif 2 < len(inp) <= 2 + DICE and fst == 's' and all(x.isnumeric() for x in inp[1:]):
-                best_score = best_score_cache.get((int(inp[1]), np.array(sorted(int(x) for x in inp[2:])).tobytes()))
+            elif 2 < c <= 2 + DICE and fst == 's' and all(x.isnumeric() for x in inp[1:]):
+                t = int(inp[1])
+                best_score = best_score_cache.get((t, np.array(sorted(int(x) for x in inp[2:])).tobytes()))
                 if best_score:
                     u, s, _ = best_score
-                    d = 'die' if u == 1 else 'dice'
-                    print(f'Score {s} with {u} {d}.')
+                    if s == 0:
+                        if t == 0:
+                            print(f'You immediately farkled!')
+                            if farkle_penalty > 0:
+                                print(f'Lose {farkle_penalty} banked points as a penalty.')
+                        else:
+                            print(f'You farkled!')
+                            print(f'Lose all {t} accumulated points', end='' if farkle_penalty > 0 else '.\n')
+                            if farkle_penalty > 0:
+                                print(f', as well as {farkle_penalty} banked points as a penalty.')
+
+                    else:
+                        def d(x):
+                            return 'die' if x == 1 else 'dice'
+
+                        r = c - u - 2
+                        print(f'Score {s} with {u} {d(u)}.')
+                        print(f'You now have a current total of {t + s} and {r} available {d(r)}.')
                 else:
                     print('Score data does not exist for this input!')
                 continue
