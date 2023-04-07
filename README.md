@@ -9,9 +9,7 @@ A Python script which calculates the optimal decisions for a single turn in the 
 
 The algorithm used is based on [Matt Busche's blog post](http://www.mattbusche.org/blog/article/zilch/) about the very similar game of Zilch, and produces expected values of rolls in agreement with [possiblywrong's blog post](https://possiblywrong.wordpress.com/2013/04/07/analysis-of-farkle/).
 
-A few settings exist which can be easily modified, and data from the most recent run will be cached so that it can be loaded if the properties of the game haven't been changed.
-
-Requires the NumPy and Numba packages.
+A few settings exist which can be easily modified, and data from the most recent run will be cached so that it can be loaded if the properties of the game haven't been changed (there is a `no_cache` version of the script for running in places such as online interpreters).
 
 
 Permissions
