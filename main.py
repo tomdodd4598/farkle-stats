@@ -98,6 +98,7 @@ def dice_perm_count(roll):
 
 
 def dice_perms(n):
+    # noinspection PyTypeChecker
     return (list(x) for x in itertools.combinations_with_replacement(range1(SIDES), n))
 
 
